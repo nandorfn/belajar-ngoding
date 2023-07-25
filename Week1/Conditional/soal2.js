@@ -29,5 +29,5 @@ for (let i = 0; i < arrayBulan.length; i++) {
     }
 }
 
-temp = tanggal+ ' ' + bulan + ' '+ tahun;
+temp = `${tanggal} ${bulan} ${tahun}`;
 console.log(temp)
