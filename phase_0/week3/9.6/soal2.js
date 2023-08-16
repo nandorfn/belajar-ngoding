@@ -23,52 +23,52 @@ maka output:
 function shoppingTime(memberId, money) {
   // you can only write your code here!
   if (!memberId) {
-    return 'Mohon maaf, toko x hanya berlaku untuk member saja';
+    return { error: 'Mohon maaf, toko x hanya berlaku untuk member saja' };
   }
 
-  const tokoX = {
-    sepatuStacattu: {
-      harga: 1500000,
-      value: 'Sepatu Stacattu'
-    },
-    bajuZoro: {
-      harga: 500000,
-      value: 'Baju Zoro'
-    },
-    bajuHNN: {
-      harga: 250000,
-      value: 'Baju H&N'
-    },
-    sweaterUniklooh: {
-      harga: 175000,
-      value: 'Sweater Uniklooh'
-    },
-    casingHP: {
-      harga: 50000,
-      value: 'Casing HP'
-    }
+let tokoX = {
+  sepatuStacattu: {
+    harga: 1500000,
+    value: 'Sepatu Stacattu'
+  },
+  bajuZoro: {
+    harga: 500000,
+    value: 'Baju Zoro'
+  },
+  bajuHNN: {
+    harga: 250000,
+    value: 'Baju H&N'
+  },
+  sweaterUniklooh: {
+    harga: 175000,
+    value: 'Sweater Uniklooh'
+  },
+  casingHP: {
+    harga: 50000,
+    value: 'Casing HP'
   }
+}
 
-  let currentMoney = money;
-  const customer = {
-    memberId,
-    money,
-    listPurchased: [],
-    changeMoney: currentMoney
-  };
+let currentMoney = money;
+const customer = {
+  memberId,
+  money,
+  listPurchased: [],
+  changeMoney: currentMoney
+};
 
-  for (const key in tokoX) {
-    if (currentMoney >= tokoX[key].harga) {
-      customer.listPurchased.push(tokoX[key].value);
-      customer.changeMoney -= tokoX[key].harga;
-    }
+for (const key in tokoX) {
+  if (currentMoney >= tokoX[key].harga) {
+    customer.listPurchased.push(tokoX[key].value);
+    customer.changeMoney -= tokoX[key].harga;
   }
+}
 
-  if (customer.listPurchased.length === 0) {
-    return 'Mohon maaf, uang tidak cukup';
-  }
+if (customer.listPurchased.length === 0) {
+  return { error: 'Mohon maaf, uang tidak cukup' };
+}
 
-  return customer;
+return customer;
 }
 
 console.log(shoppingTime('1820RzKrnWn08', 2475000));
